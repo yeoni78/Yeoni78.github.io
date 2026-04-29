@@ -1,0 +1,481 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    background-color: #000; /* 배경 기본 블랙 */
+    color: #fff;
+    overflow-x: auto;
+    min-width: 1200px;
+
+    /* 배경 이미지 설정 */
+  background-image: url("00_1전체\ 배경.png"); /* 실제 이미지 파일 이름으로 변경하세요 */
+  
+  /* 배경 이미지가 한 번만 나타나고 전체 화면을 채우도록 설정 (선택 사항) */
+  background-repeat: no-repeat; /* 반복하지 않음 */
+  background-size: cover; /* 화면을 가득 채우도록 조절 */
+  background-position: center; /* 이미지를 중앙에 배치 */
+}
+
+/* 상단 헤더 스타일 */
+.main-header {
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    
+    /* 💡 [핵심 수정]: absolute를 fixed로 변경합니다 */
+    position: fixed; 
+    
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 스크롤해도 다른 이미지들보다 위에 있도록 설정 */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding-left: max(50px, calc(50vw - 670px));
+    padding-right: max(50px, calc(50vw - 550px));
+}
+
+/* 로고 박스 정렬 */
+.header-left {
+    display: flex;
+    align-items: center; /* 로고 이미지들이 수직 중앙에 오도록 */
+    gap: 15px;
+}
+
+/* 메뉴 리스트 정렬 */
+.header-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+    align-items: center; /* 메뉴 텍스트 수직 중앙 정렬 */
+}
+
+/* 메뉴 글자 스타일 */
+.header-nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    /* 💡 글자가 아래로 쏠린다면 line-height를 헤더 높이와 맞추거나 1로 설정 */
+    line-height: 1; 
+}
+/* 상단 왼쪽 로고 영역 */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* 로고와 글씨 사이 간격 */
+}
+
+/* 합쳐진 SVG 로고 크기 조절 */
+.header-logo-composite {
+    height: 55px; /* 피그마 디자인에 맞춰 높이를 조절하세요 */
+    width: auto; /* 비율을 유지하며 너비 자동 조절 */
+}
+
+/* 상단 오른쪽 네비게이션 메뉴 */
+.header-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.header-nav ul li a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+    letter-spacing: 1px;
+}
+
+.header-nav ul li a:hover {
+    color: #fff; /* 마우스 올리면 하얗게 변함 */
+}
+
+/* 메인 영역 패딩 (헤더가 고정되어 있어서 내용이 겹치지 않게 함) */
+main {
+    padding-top: 0px; 
+}
+
+/* [style.css] 기존 히어로 관련 스타일을 지우고 아래 내용 추가 */
+
+.section-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* 영역 밖 사진 숨김 */
+    background-color: #000;
+}
+
+/* 기차처럼 길게 늘어선 이미지 트랙 */
+.hero-slider-track {
+    display: flex;
+    width: 400%;
+    animation: slide-animation 16s infinite; /* 12s보다 조금 더 느긋하게 16s 추천 */
+}
+
+.hero-slide {
+    width: 25%; /* 전체 트랙의 1/4 (사진 1장당 화면 100%) */
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 💡 오른쪽에서 왼쪽으로 넘기는 마법의 애니메이션 */
+@keyframes slide-animation {
+    /* 0% ~ 25%: 1번 사진이 머무는 구간 */
+    0% { transform: translateX(0); }
+    25% { transform: translateX(0); }
+    
+    /* 33.3% ~ 58.3%: 2번 사진이 머무는 구간 (이동 8.3% + 정지 25%) */
+    33.3% { transform: translateX(-25%); }
+    58.3% { transform: translateX(-25%); }
+    
+    /* 66.6% ~ 91.6%: 3번 사진이 머무는 구간 */
+    66.6% { transform: translateX(-50%); }
+    91.6% { transform: translateX(-50%); }
+    
+    /* 💡 핵심: 91.6%에서 100%까지 쉬지 않고 부드럽게 1번 복사본 위치(-75%)를 거쳐 
+       처음(0)으로 부드럽게 이어지며 돌아갑니다. */
+    100% { transform: translateX(-75%); }
+}
+
+/* 하단 바는 위치만 잡아줍니다 (클릭 기능 없음) */
+.slider-controls {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+/* 하단 슬라이더 컨트롤 (가로선) */
+.slider-controls {
+    position: absolute;
+    bottom: 50px; /* 바닥에서 띄우는 여백 */
+    display: flex;
+    gap: 15px; /* 선 사이의 간격 */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bar {
+    width: 50px; /* 선의 길이 */
+    height: 2px; /* 선의 두께 */
+    background-color: rgba(255, 255, 255, 0.3); /* 평소엔 반투명 */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bar.active {
+    background-color: #fff; /* 활성화된 선은 하얗고 뚜렷하게 */
+}
+
+.bar:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* -------------------------------------------------------------------------- */
+/* --- 두 번째 섹션 (중간 문구 & 콜라주) --- */
+
+/* 중간 인용구 문구 스타일 */
+.intro-quote {
+    text-align: center;
+    padding: 80px 0;
+    color: #333; /* 밝은 배경용 어두운 글씨 */
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    position: relative;
+    font-weight: 600;
+
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 문구 위아래에 있는 얇은 장식 선 만들기 */
+.intro-quote::before,
+.intro-quote::after {
+    content: '';
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    height: 1px;
+    /* 💡 수정: 255(흰색) -> 0(검은색)의 반투명으로 변경 */
+    background-color: rgba(0, 0, 0, 0.2); 
+    margin: 40px auto;
+}
+
+/* 콜라주 섹션 전체 배경 */
+.section-collage {
+    background-color: rgba(255, 255, 255, 0.03); 
+    padding: 60px 0 120px 0;
+}
+
+.collage-logo-box {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.collage-logo {
+    height: 120px; 
+    width: auto;
+}
+
+/* 지그재그 배치를 위한 뼈대 (비율 완전 수정) */
+.collage-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 상단 기준 정렬 */
+    gap: 60px; /* 왼쪽 기둥과 오른쪽 기둥 사이 간격 */
+    max-width: 1100px; /* 너비를 조금 더 넓힘 */
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* 왼쪽 이미지 기둥 (좁게 설정) */
+.collage-left {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* 이미지 사이 간격 늘림 */
+    width: 320px; /* 피그마에 맞춰 너비 고정 */
+}
+
+/* 오른쪽 이미지 기둥 (넓게 설정 & 지그재그 배치) */
+.collage-right {
+    display: flex;
+    flex-direction: column;
+    width: 676px; /* 풍경 이미지가 더 크므로 왼쪽보다 넓게 설정 */
+    padding-top: 53px; /* 텍스트가 왼쪽 이미지의 중간쯤 오도록 위에서부터 밀어냄 */
+}
+
+/* 이미지들 꽉 차게 설정 */
+.item-tall { 
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
+
+.item-square { 
+    width: 100%; /* 왼쪽 기둥(320px)의 너비에 딱 맞게 꽉 채움 */
+    height: auto; 
+    display: block; 
+}
+
+/* 오른쪽 글귀 상자 */
+.right-text-box {
+    margin-bottom: 70px;
+    font-size: 1.05rem;
+    color: #1a1a1a; /* 💡 수정: #fff (흰색) -> #1a1a1a (거의 검은색) */
+    letter-spacing: 1px;
+    font-weight: 600; /* 살짝 굵게 */
+}
+.item-landscape { 
+    width: 100%; /* 오른쪽 기둥(550px) 너비에 맞게 꽉 채움 */
+    height: auto; 
+    display: block; 
+    
+}
+/* 인용구 그룹 전체 박스 */
+.right-quote-group {
+    position: relative; /* 글씨 배치를 위한 기준점 */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    /* transform: rotate(-3deg); <-- 이 부분을 삭제했습니다 */
+}
+
+/* 통합 선 이미지 스타일 */
+.item-quote-line {
+    width: 550px; /* 이미지 크기에 맞게 조절하세요 */
+    height: auto;
+    display: block;
+    opacity: 0.8;
+}
+
+/* 이미지 위에 겹쳐질 실제 글씨 (기울기 없음) */
+.right-quote-group .quote-text {
+    position: absolute; 
+    top: 50%;           /* 세로 중앙 */
+    left: 50%;          /* 가로 중앙 */
+    transform: translate(-50%, -50%); /* 정확한 정중앙 정렬 */
+    
+    white-space: nowrap; 
+    color: #222;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* 하단의 빛나는 구슬 (크기 고정 및 정렬) */
+.item-square-small { 
+    width: 280px; /* 구슬 이미지 크기 */
+    height: auto; 
+    display: block; 
+    margin-top: 30px; /* 풍경 이미지와의 간격 */
+} 
+
+/* 하단 마무리 텍스트 */
+.collage-bottom-text {
+    text-align: right; 
+    
+    /* 💡 [핵심 추가]: 위쪽 이미지 그룹과 똑같은 크기의 투명 상자에 가둡니다! */
+    max-width: 1100px; 
+    margin-left: auto;  /* 상자를 화면 가운데로 오게 함 */
+    margin-right: auto; /* 상자를 화면 가운데로 오게 함 */
+    
+    /* 기존 위아래 여백 유지 */
+    margin-top: 3px; 
+    margin-bottom: 700px; 
+    
+    /* 💡 이제 화면 끝이 아니라 '이미지 오른쪽 끝선'을 기준으로 이동합니다! */
+    padding-right: 570px; /* 위치를 보시고 이 숫자를 늘리거나 줄여보세요 */
+    
+    line-height: 3;
+    color: #333;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+/* -------------------------------------------------------------------------- */
+/* --- 맨 아래 푸터 영역 --- */
+.main-footer {
+    background-color: #000;
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    height: 120px; /* 푸터 로고 크기 */
+    width: auto;
+}
+
+/* --- 세 번째 섹션: 세계관 소개 스타일 --- */
+.section-worldview {
+    position: relative;
+    width: 100%;
+
+    height: 1250px; 
+    
+    padding-top: 100px;
+    
+    /* 💡 [추가]: 섹션 자체의 하단 여백을 주어 푸터를 아래로 밀어냅니다 */
+    padding-bottom: 200px; 
+
+    /* 배경 설정이 필요하다면 유지 */
+    background-color: transparent; 
+}
+
+/* 마무리 텍스트와 푸터 사이 간격 조절 (이전 섹션 영향 확인) */
+.collage-bottom-text {
+    /* 기존 margin-bottom이 너무 크다면 적절히 줄여주세요 */
+    margin-bottom: 300px; 
+}
+
+.worldview-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+/* 1. 상단 타이틀 위치 */
+.world-title {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    z-index: 5;
+}
+.img-title { width: 180px; height: auto; }
+
+/* 2. 왼쪽 장식 & 나침반 위치 (메인 카드 뒤로 겹침) */
+.world-deco {
+    position: absolute;
+    top: 250px;
+    left: 150px;
+    z-index: 1;
+}
+.img-deco { width: 350px; height: auto; opacity: 0.9; }
+
+/* 3. 중앙 메인 카드 위치 */
+.world-main-card {
+    position: absolute;
+    top: 350px;
+    left: 54%;
+    transform: translateX(-50%); /* 정확한 중앙 정렬 */
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.img-main { width: 400px; height: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+.btn-prev, .btn-next {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 50px;
+    font-size: 1.2rem;
+    z-index: 10;
+    margin-top: 350px; 
+
+ 
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    
+  
+    padding: 0;
+    line-height: 1;
+}
+
+.btn-prev { 
+
+    padding-bottom: 2px; 
+    padding-right: 2px;  
+}
+
+.btn-next { 
+
+    padding-bottom: 2px; 
+    padding-left: 2px; 
+}
+
+
+.btn-prev { padding-right: -1px; }
+.btn-next { padding-left: 2px; } 
+
+/* 4. 오른쪽 보러가기 링크 위치 */
+.world-link {
+    position: absolute;
+    top: 400px;
+    right: 60px;
+    z-index: 5;
+}
+.img-link { 
+    width: 320px; 
+    height: auto; 
+    transition: transform 0.3s ease;
+}
+.img-link:hover {
+    transform: scale(1.05); /* 마우스 올리면 살짝 커짐 */
+}
