@@ -1,0 +1,110 @@
+/* =========================================
+   [1] 메인 배너 (Hero Section)
+========================================= */
+.hero {
+    height: 100vh;
+    width: 100%;
+    /* 배경 이미지가 들어올 틀 (임시 그라데이션) */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.1)), var(--primary-gold); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* [○환영해요○] 글리치 스타일 */
+.glitch-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-top: 15px;
+    text-shadow:
+        -2.5px -1px 0px #ffff00, 
+        2.5px 1px 0px #00ffff,
+        0 0 5px rgba(255,255,255,0.3);
+}
+
+/* =========================================
+   [2] 프로모션 & 패키지 영역
+========================================= */
+.promotions {
+    padding: 80px 50px;
+    background-color: var(--bg-main);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section-title p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* 카드 그리드 레이아웃 (반응형) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* 이미지 임시 박스 */
+.image-placeholder {
+    width: 100%;
+    height: 250px;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.card-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.card-content h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
