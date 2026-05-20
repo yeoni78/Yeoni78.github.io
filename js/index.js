@@ -84,3 +84,4 @@ pauseBtn.addEventListener('click', () => {
 // 사이트 처음 켜졌을 때 초기화 및 실행
 updateControls();
 startSlide();
+

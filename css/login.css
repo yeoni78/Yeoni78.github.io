@@ -1,0 +1,138 @@
+/* =========================================
+   로그인 페이지 레이아웃
+========================================= */
+.login-main {
+    /* 헤더가 가리지 않도록 위쪽 여백을 주고 화면 중앙에 배치 */
+    padding-top: 150px; 
+    padding-bottom: 100px;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-main);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 500px; /* 로그인 박스 최대 너비 */
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: var(--text-dark);
+}
+
+/* =========================================
+   탭 (로그인 / 로그아웃) 디자인
+========================================= */
+.login-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    color: #999;
+    cursor: pointer;
+    font-weight: 500;
+    border-bottom: 3px solid transparent; /* 기본 밑줄 투명 */
+    transition: all 0.3s;
+}
+
+/* 활성화된 탭 디자인 */
+.tab-btn.active {
+    color: #000000;
+    font-weight: bold;
+    border-bottom: 3px solid #000000; /* 활성화 시 검은색 굵은 밑줄 */
+}
+
+/* =========================================
+   입력 폼 및 버튼 디자인
+========================================= */
+.tab-content {
+    display: none; /* 기본적으로 숨김 */
+}
+
+.tab-content.active {
+    display: block; /* active 클래스가 붙으면 보임 */
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* 입력창 클릭 시 테두리 금색으로 변경 */
+.input-group input:focus {
+    border-color: var(--primary-gold); 
+}
+
+.helper-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 25px;
+    padding-left: 5px;
+}
+
+.check-group {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.check-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.check-group label {
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+}
+
+/* 크고 까만 로그인 버튼 */
+.submit-btn {
+    width: 100%;
+    padding: 20px;
+    background-color: #111111;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-gold); /* 마우스 올리면 금색으로 변경 */
+}
+
+.logout-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+    padding: 40px 0;
+}

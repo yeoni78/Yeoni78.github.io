@@ -290,3 +290,49 @@
 .about-image .image-placeholder {
     height: 400px; /* 메인 소개에 어울리는 큰 이미지 틀 */
 }
+
+/* =========================================
+   [5] 고객 한줄평 영역 (푸터 위)
+========================================= */
+.guest-review-section {
+    padding: 60px 50px;
+    background-color: var(--bg-main);
+    display: flex;
+    justify-content: center;
+}
+
+/* 롯데호텔 스타일의 연한 회색 박스 */
+.review-box {
+    background-color: #f7f7f7; 
+    max-width: 1200px;
+    width: 100%;
+    padding: 40px 60px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.review-box p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+    word-break: keep-all; /* 단어가 중간에 잘리지 않고 깔끔하게 줄바꿈되도록 설정 */
+}
+
+/* =========================================
+   🚨 괴담 모드 텍스트 스위치 설정 
+========================================= */
+/* 1. 평소에는 괴담 텍스트를 완전하게 숨깁니다 */
+.horror-text {
+    display: none; 
+    color: #ff0000; /* 나중에 나타날 땐 섬뜩한 붉은색으로 지정 */
+    font-weight: bold;
+}
+
+/* 2. 나중에 자바스크립트로 <body> 태그에 'horror' 클래스가 붙으면 실행될 마법 */
+body.horror .normal-text {
+    display: none; /* 정상 텍스트는 사라지고 */
+}
+
+body.horror .horror-text {
+    display: block; /* 괴담 텍스트가 나타납니다! */
+}
