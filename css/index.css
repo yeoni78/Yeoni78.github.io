@@ -108,3 +108,118 @@
     color: var(--text-muted);
     font-size: 0.95rem;
 }
+
+/* =========================================
+   [3] 빠른 객실 검색바 (Booking Bar)
+========================================= */
+.booking-bar {
+    background-color: var(--bg-main);
+    padding: 0 50px;
+    /* 배너 위로 살짝 겹치게 끌어올리는 고급 스킬 */
+    margin-top: -50px; 
+    position: relative;
+    z-index: 10;
+}
+
+.booking-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid var(--primary-gold);
+}
+
+.booking-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-item label {
+    font-size: 0.85rem;
+    color: var(--primary-gold);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.booking-item input, 
+.booking-item select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--text-dark);
+    font-family: inherit;
+}
+
+.btn-book {
+    background-color: var(--primary-gold);
+    color: var(--text-light);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-book:hover {
+    background-color: #a38c5e; /* 조금 더 어두운 금색 */
+}
+
+/* =========================================
+   [4] 호텔 소개 섹션 (About Section)
+========================================= */
+.about-hotel {
+    padding: 100px 50px;
+    background-color: var(--bg-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-content {
+    flex: 1; /* 왼쪽 텍스트 영역과 오른쪽 이미지 영역을 1:1 비율로 */
+}
+
+.gold-title {
+    color: var(--primary-gold);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* 아주 희미하게 보여서 호기심을 유발하는 텍스트 */
+.whisper-text {
+    font-size: 0.8rem;
+    color: var(--bg-main); /* 배경색과 똑같이 해서 평소엔 안 보이게 함 */
+    transition: color 0.3s;
+}
+
+/* 마우스를 올리거나 드래그할 때만 살짝 보이게 설정 */
+.whisper-text:hover {
+    color: #ff0000; /* 마우스 오버 시 빨간색으로! */
+    cursor: default;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image .image-placeholder {
+    height: 400px; /* 메인 소개에 어울리는 큰 이미지 틀 */
+}
