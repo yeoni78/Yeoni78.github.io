@@ -6,11 +6,11 @@
     <title>골든 호텔 리조트 | Golden Hotel Resort</title>
     
     <link rel="stylesheet" href="css/common.css">
-    
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<header id="main-header">
+
+    <header id="main-header">
         <div class="logo">
             <a href="index.html"><h2>Golden Hotel</h2></a>
         </div>
@@ -25,12 +25,33 @@
     </header>
 
     <main>
-        <section class="hero">
-          <div class="hero-text">
-    <h1>Golden Hotel Resort</h1>
-    <p class="glitch-text">[○환영해요○]</p> 
-    </div>
-    <section class="booking-bar">
+       <section class="hero hero-slider">
+            
+            <div class="hero-text-fixed">
+                <h1>Golden Hotel Resort</h1>
+                <p class="glitch-text">[○환영해요○]</p>
+                
+                <div class="custom-controls">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                    <span class="slide-fraction"></span>
+                    
+                    <button class="ctrl-btn prev-btn">&lt;</button>
+                    <button class="ctrl-btn pause-btn">||</button>
+                    <button class="ctrl-btn next-btn">&gt;</button>
+                </div>
+            </div>
+
+            <div class="slider-wrapper">
+                <div class="slide" style="background-color: var(--primary-gold);"></div>
+                <div class="slide" style="background-color: #2c2c2c;"></div>
+                <div class="slide" style="background-color: #5a4b2e;"></div>
+            </div>
+            
+        </section>
+        
+        <section class="booking-bar">
             <div class="booking-container">
                 <div class="booking-item">
                     <label>Check-in</label>
@@ -51,8 +72,8 @@
                 </div>
                 <button class="btn-book">검색하기</button>
             </div>
-        </section>
-
+        </section> 
+        
         <section class="about-hotel">
             <div class="about-content">
                 <h2 class="gold-title">영원히 머물고 싶은 공간</h2>
@@ -63,7 +84,7 @@
                 <div class="image-placeholder">호텔 전경 이미지 자리</div>
             </div>
         </section>
-
+        
         <section class="promotions">
             <div class="section-title">
                 <h2>Promotion & Packages</h2>
@@ -96,15 +117,18 @@
                 </article>
             </div>
         </section>
-    </main> <footer>
+    </main> 
+
+    <footer>
         <div class="footer-content">
             <h2>Golden Hotel Resort</h2>
             <p>호텔 테마 반응형 웹사이트 프로젝트</p>
             <p>Copyright © 2026 Golden Hotel. All rights reserved.</p>
         </div>
     </footer>
-    </main>
 
-    <script src="js/main.js"></script>
+<script src="js/common.js"></script>
+    
+    <script src="js/index.js"></script>
 </body>
 </html>

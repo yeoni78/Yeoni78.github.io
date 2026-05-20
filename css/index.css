@@ -1,37 +1,104 @@
 /* =========================================
-   [1] 메인 배너 (Hero Section)
+   [1] 메인 배너 슬라이더 (Hero Slider)
 ========================================= */
-.hero {
+.hero-slider {
+    position: relative;
     height: 100vh;
     width: 100%;
-    /* 배경 이미지가 들어올 틀 (임시 그라데이션) */
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.1)), var(--primary-gold); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--text-light);
+    overflow: hidden; 
 }
 
-.hero-text h1 {
+/* 이미지만 넘어가는 배경 박스 */
+.slider-wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.5s ease-in-out; 
+}
+
+.slide {
+    flex: 0 0 100%; 
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* =========================================
+    고정된 텍스트 및 컨트롤러 레이아웃
+========================================= */
+.hero-text-fixed {
+    position: absolute; /* 슬라이더 위에 둥둥 띄움 */
+    top: 50%; 
+    transform: translateY(-50%); /* 세로 중앙 정렬 */
+    left: 10%; /* 왼쪽 여백 */
+    z-index: 10; 
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-text-fixed h1 {
     font-size: 3rem;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* [○환영해요○] 글리치 스타일 */
+/* [○환영해요○] 기본 스타일 (괴담 모드 발동 전) */
 .glitch-text {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-light);
+    color: #FFD700;
     letter-spacing: 2px;
     margin-top: 15px;
-    text-shadow:
-        -2.5px -1px 0px #ffff00, 
-        2.5px 1px 0px #00ffff,
-        0 0 5px rgba(255,255,255,0.3);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
 }
 
+/* 롯데호텔 스타일 컨트롤러 디자인 */
+.custom-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-top: 50px; /* 글자와 컨트롤러 사이 간격 */
+}
+
+/* 진행 선 (배경) */
+.progress-bar-bg {
+    width: 60px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 진행 선 (채워지는 부분) */
+.progress-bar-fill {
+    width: 33.33%; /* 자바스크립트가 길이를 조절함 */
+    height: 100%;
+    background-color: var(--text-light);
+    transition: width 0.3s ease;
+}
+
+.slide-fraction {
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+
+/* < || > 버튼 디자인 */
+.ctrl-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.3s;
+}
+
+.ctrl-btn:hover {
+    color: var(--primary-gold); /* 마우스 올리면 금색으로 */
+}
 /* =========================================
    [2] 프로모션 & 패키지 영역
 ========================================= */
