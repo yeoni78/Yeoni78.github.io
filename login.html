@@ -7,9 +7,9 @@
     
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login.css"> </head>
-<body>
+<body class="login-page">
 
-    <header id="main-header" class="scrolled">
+    <header id="main-header">
         <div class="logo">
             <a href="index.html"><h2>Golden Hotel</h2></a>
         </div>
@@ -29,14 +29,14 @@
 
             <div class="login-tabs">
                 <button class="tab-btn active" data-target="login-form">로그인</button>
-                <button class="tab-btn" data-target="logout-form">로그아웃</button>
+                <button class="tab-btn" data-target="reset-form">초기화</button>
             </div>
 
             <div id="login-form" class="tab-content active">
                 <div class="input-group">
                     <input type="text" placeholder="아이디 입력" required>
                 </div>
-                <p class="helper-text">· 로그인 시, 아이디를 입력해주세요.</p>
+                <p class="helper-text">· 방문자님의 이름을 입력해주세요.</p>
                 
                 <div class="input-group">
                     <input type="password" placeholder="비밀번호 입력" required>
@@ -44,24 +44,27 @@
                 
                 <div class="check-group">
                     <input type="checkbox" id="save-id">
-                    <label for="save-id">아이디 저장</label>
+                    <label for="save-id">이름 저장</label>
                 </div>
                 
                 <button type="submit" class="submit-btn">로그인</button>
             </div>
 
-            <div id="logout-form" class="tab-content">
-                <p class="logout-message">현재 로그인되어 있습니다.</p>
-                <button type="button" class="submit-btn">로그아웃</button>
+            <div id="reset-form" class="tab-content">
+                <div class="reset-message-box">
+                    <h3>초기화 하시겠습니까?</h3>
+                    <p class="warning-text">*단 기존에 했던 모든 행동들이 초기화 되고 새로 시작하게 됩니다*</p>
+                </div>
+                <button type="button" class="submit-btn reset-btn">초기화 실행</button>
             </div>
         </div>
-    </main> 
+    </main>
 
     <footer>
         <div class="footer-content">
             <h2>Golden Hotel Resort</h2>
             <p>호텔 테마 반응형 웹사이트 프로젝트</p>
-            <p>Copyright © 2026 Golden Hotel. All rights reserved.</p>
+            <p> © 2026 Golden Hotel. with:김민지, 권미진.</p>
         </div>
     </footer>
 

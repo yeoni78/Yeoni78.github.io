@@ -1,4 +1,35 @@
 /* =========================================
+   로그인 페이지 전용 헤더 스타일
+   (스크롤 맨 위에서 흰색 바탕에 묻히지 않도록 글자를 금색으로)
+========================================= */
+.login-page #main-header {
+    /* 🚨 아래쪽에 얇고 연한 회색 테두리 선 추가 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+}
+
+.login-page #main-header h2,
+.login-page #main-header a {
+    color: var(--primary-gold); 
+    font-weight: bold; 
+}
+
+/* 스크롤을 내려서 까만 배경(.scrolled)이 되면 실행할 스타일 */
+.login-page #main-header.scrolled {
+    /* 🚨 검은 배경이 되면 아래쪽 테두리 선을 없앱니다 */
+    border-bottom: none; 
+}
+
+.login-page #main-header.scrolled h2,
+.login-page #main-header.scrolled a {
+    color: var(--text-light);
+}
+
+/* 까만 배경일 때 마우스 올리면 다시 금색으로 변하는 효과 유지 */
+.login-page #main-header.scrolled a:hover {
+    color: var(--primary-gold);
+}
+
+/* =========================================
    로그인 페이지 레이아웃
 ========================================= */
 .login-main {
@@ -136,3 +167,36 @@
     margin-bottom: 30px;
     padding: 40px 0;
 }
+
+/* =========================================
+   초기화(Reset) 탭 디자인
+========================================= */
+.reset-message-box {
+    text-align: center;
+    padding: 30px 0 40px 0;
+}
+
+.reset-message-box h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+/* 경고 문구 스타일 */
+.warning-text {
+    font-size: 0.95rem;
+    color: #d9534f; /* 위험을 알리는 붉은색 계열 */
+    line-height: 1.6;
+    font-weight: bold;
+}
+
+/* 초기화 실행 버튼 */
+.reset-btn {
+    background-color: #333333;
+}
+
+/* 마우스를 올리면 붉은색으로 변하게 하여 경고 느낌 강조 */
+.reset-btn:hover {
+    background-color: #d9534f; 
+}
+
