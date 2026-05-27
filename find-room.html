@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>호실 찾기 | Golden Hotel Resort</title>
+    
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/find-room.css">
+</head>
+<body class="find-room-page">
+
+    <header id="main-header">
+        <div class="logo">
+            <a href="index.html"><h2>Golden Hotel</h2></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="login.html">로그인</a></li>
+                <li><a href="find-room.html">호실 찾기</a></li>
+                <li><a href="my-room.html">내 호실</a></li>
+                <li><a href="rules.html">호텔 이용 수칙</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="find-main">
+        <div class="find-container">
+            
+            <div class="find-header-zone">
+                <h2 class="page-title">호실 찾기</h2>
+                <p class="page-sub">나만의 맞춤형 호실을 찾아보세요. 어디에서나 품격있는 서비스와 시설을 제공합니다.</p>
+            </div>
+
+            <div class="search-tabs">
+                <button class="search-tab-btn active" data-tab="direct">직접 검색</button>
+                <button class="search-tab-btn" data-tab="custom">맞춤 호실 서비스</button>
+            </div>
+
+            <div class="brand-selector">
+                <button class="brand-btn active" data-brand="magicbunny">매직버니</button>
+                <button class="brand-btn" data-brand="bluedream">블루드림</button>
+                <button class="brand-btn" data-brand="flower">플라워</button>
+            </div>
+
+            <div class="find-content-layout direct-mode" id="content-layout">
+                
+                <div class="room-list-zone">
+                    <div class="zone-title" id="result-count">검색 결과 (6)</div>
+                    
+                    <div class="room-cards-container" id="room-cards-list"></div>
+                </div>
+
+               <div class="dice-game-zone" id="dice-zone">
+                    <div class="dice-box-wrapper">
+                        <p>주사위를 굴려 맞춤형 호실을 찾아보세요.</p>
+                        
+                        <div class="dice-container-placeholder">
+                            <div class="mock-dice" id="dice-1">⚀</div>
+                            <div class="mock-dice" id="dice-2">⚁</div>
+                            <div class="mock-dice" id="dice-3">⚂</div>
+                        </div>
+                        
+                        <button type="button" class="roll-btn" id="btn-roll-dice">주사위 굴리기</button>
+                    </div>
+                </div>
+
+            </div> </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h2>Golden Hotel Resort</h2>
+            <p>호텔 테마 반응형 웹사이트 프로젝트</p>
+            <p>Copyright © 2026 Golden Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/find-room.js"></script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+/* =========================================
+   호실 찾기 페이지 전용 레이아웃 & 헤더 테두리
+========================================= */
+.find-room-page #main-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+}
+
+.find-room-page #main-header h2,
+.find-room-page #main-header a {
+    color: var(--primary-gold); 
+    font-weight: bold; 
+}
+
+.find-room-page #main-header.scrolled {
+    border-bottom: none; 
+}
+
+.find-room-page #main-header.scrolled h2,
+.find-room-page #main-header.scrolled a {
+    color: var(--text-light);
+}
+
+.find-main {
+    padding-top: 140px;
+    padding-bottom: 80px;
+    background-color: var(--bg-main);
+    min-height: calc(100vh - 200px);
+}
+
+.find-container {
+    max-width: 1280px; /* 전체 화면 가로 폭을 살짝 늘려 여백 확보 */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.find-header-zone {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 15px;
+}
+
+.page-sub {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* 탭 메뉴 */
+.search-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.search-tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #888;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+}
+
+.search-tab-btn.active {
+    color: #111;
+    font-weight: bold;
+}
+
+.search-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #111;
+}
+
+/* 브랜드 선택 */
+.brand-selector {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+.brand-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-right: 1px solid #e0e0e0;
+}
+
+.brand-btn:last-child {
+    border-right: none;
+}
+
+.brand-btn.active {
+    background-color: #111;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* =========================================
+   콘텐츠 레이아웃 스위칭 (직접검색 vs 맞춤)
+========================================= */
+.find-content-layout {
+    display: flex;
+    gap: 30px;
+}
+
+/* 직접 검색 모드: 주사위 가림 */
+.find-content-layout.direct-mode #dice-zone {
+    display: none;
+}
+.find-content-layout.direct-mode .room-list-zone {
+    flex: 1;
+}
+
+/* 🚨 맞춤 호실 모드: 카드가 깨지지 않도록 왼쪽 공간을 훨씬 넓게 분배 (6.5 대 3.5) */
+.find-content-layout.custom-mode .room-list-zone {
+    flex: 1.8; 
+}
+.find-content-layout.custom-mode #dice-zone {
+    display: block;
+    flex: 1;
+}
+
+.zone-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #222;
+}
+
+.room-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =========================================
+   🚨 가로형 호텔 카드 리디자인 (찌그러짐 방지 최적화)
+========================================= */
+.room-card {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    height: 180px; /* 고정 높이 제공으로 정갈함 유지 */
+}
+
+.room-img-placeholder {
+    width: 220px; /* 이미지 너비를 살짝 줄여 텍스트 공간 확보 */
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-right: 1px solid #e0e0e0;
+    flex-shrink: 0; /* 이미지 칸이 찌그러지는 것을 방지 */
+}
+
+.room-info {
+    padding: 20px 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0; /* 내부 텍스트 유연성 확보 */
+}
+
+.room-info h3 {
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.room-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.room-details p {
+    font-size: 0.95rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* 🚨 주소와 체크인이 중간에 절대 꺾이지 않도록 설정 */
+}
+
+.room-details .label {
+    font-weight: bold;
+    color: #222;
+    width: 85px;
+    flex-shrink: 0;
+}
+
+/* 오른쪽 버튼 영역 */
+.room-action-zone {
+    width: 150px;
+    border-left: 1px solid #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 8px;
+    background-color: #fafafa;
+    flex-shrink: 0;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #111;
+    background: none;
+    transition: all 0.2s;
+}
+
+.action-btn.btn-view {
+    color: #111;
+    background-color: #fff;
+}
+.action-btn.btn-view:hover {
+    background-color: #f0f0f0;
+}
+
+.action-btn.btn-book {
+    color: #fff;
+    background-color: #111;
+}
+.action-btn.btn-book:hover {
+    background-color: var(--primary-gold);
+    border-color: var(--primary-gold);
+}
+
+/* =========================================
+   오른쪽 주사위 게임판 디자인 (높이 정렬 수정)
+========================================= */
+.dice-game-zone {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 4px;
+    height: 580px; 
+    
+    /* 🚨 추가: 왼쪽 '검색 결과(3)' 타이틀의 높이와 완벽하게 일치시키는 마법의 수치 */
+    margin-top: 45px; 
+}
+
+.dice-box-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: 1px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* 타이틀 대신 바로 설명으로 연결 */
+.dice-box-wrapper p {
+    color: #222;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.dice-container-placeholder {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 45px;
+}
+
+.mock-dice {
+    font-size: 3.2rem;
+    color: #222;
+    background: #f9f9f9;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+}
+
+.roll-btn {
+    padding: 15px 50px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.roll-btn:hover {
+    background-color: var(--primary-gold);
+}
+
+/* 모바일 처리 */
+@media (max-width: 992px) {
+    .find-content-layout.custom-mode {
+        flex-direction: column-reverse;
+    }
+    .room-card {
+        height: auto;
+        flex-direction: column;
+    }
+    .room-img-placeholder {
+        width: 100%;
+        height: 140px;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .room-action-zone {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #e8e8e8;
+        flex-direction: row;
+    }
+    .dice-game-zone {
+        height: auto;
+        padding: 15px;
+    }
+}
+
