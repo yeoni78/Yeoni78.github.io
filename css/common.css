@@ -92,3 +92,41 @@ footer p {
     font-size: 0.9rem;
     margin-bottom: 5px;
 }
+
+/* =========================================
+   로그인 상태 표시등 (조그만 원형 표시)
+========================================= */
+.login-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #28a745; /* 초록색 불빛 (온라인 상태 느낌) */
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.6); /* 은은한 빛 번짐 효과 */
+}
+
+/* =========================================
+   [공통] 상단 메뉴 마우스 오버(Hover) 효과
+========================================= */
+/* 메뉴 글자에 마우스를 올렸을 때 부드럽게 색이 변하도록 애니메이션 추가 */
+header nav ul li a {
+    transition: color 0.3s ease; 
+}
+
+/* 마우스가 올라갔을 때(hover) 황금색으로 변경 */
+header nav ul li a:hover {
+    color: #b8860b !important; /* 테마에 맞는 황금/노란색 (!important로 최우선 적용) */
+}
+
+/* 스크롤을 내려서 헤더가 검은색으로 변했을 때도 호버 효과 유지 */
+header.scrolled nav ul li a:hover {
+    color: #b8860b !important; 
+}
+
+/* 왼쪽 Golden Hotel 로고에도 마우스 오버 효과 추가 (선택 사항) */
+header .logo h2:hover {
+    color: #d4af37 !important; /* 로고는 살짝 더 밝은 황금색으로 */
+    transition: color 0.3s ease;
+}
