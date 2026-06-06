@@ -130,3 +130,196 @@ header .logo h2:hover {
     color: #d4af37 !important; /* 로고는 살짝 더 밝은 황금색으로 */
     transition: color 0.3s ease;
 }
+
+/* =========================================
+   [괴담 모드] 전역 테마 반전 (숙박하기 누른 후)
+========================================= */
+/* body에 horror-mode 클래스가 붙으면 사이트 전체 색상이 바뀝니다 */
+body.horror-mode {
+    background-color: #050505 !important;
+    color: #cc0000 !important;
+}
+
+/* 헤더와 메뉴 기괴하게 변경 */
+body.horror-mode header {
+    background-color: #000 !important;
+    border-bottom: 1px solid #4a0000 !important;
+}
+body.horror-mode header nav ul li a {
+    color: #8b0000 !important;
+}
+body.horror-mode header nav ul li a:hover {
+    color: #ff0000 !important;
+    text-shadow: 0 0 10px red !important;
+}
+body.horror-mode .logo h2 {
+    color: #ff0000 !important;
+    font-family: '궁서', 'Gungsuh', serif !important; /* 섬뜩한 글씨체로 변경 */
+    text-shadow: 0 0 5px #ff0000 !important;
+}
+
+/* 박스 배경, 텍스트 및 버튼 반전 */
+body.horror-mode .room-card, 
+body.horror-mode .tab-content, 
+body.horror-mode .find-container, 
+body.horror-mode .room-container {
+    background-color: #111 !important;
+    border-color: #330000 !important;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.1) !important;
+}
+
+body.horror-mode h1, 
+body.horror-mode h2, 
+body.horror-mode h3, 
+body.horror-mode p {
+    color: #a80000 !important;
+}
+
+body.horror-mode button {
+    background-color: #220000 !important;
+    color: #ff0000 !important;
+    border: 1px solid #ff0000 !important;
+}
+
+/* =========================================
+   [괴담 모드] 남은 하얀색 배경 완벽하게 태우기
+========================================= */
+/* 1. 메인 뼈대와 바깥쪽 빈 공간을 모두 검은색으로 덮습니다 */
+body.horror-mode,
+body.horror-mode main,
+body.horror-mode .room-main,
+body.horror-mode .find-main,
+body.horror-mode footer {
+    background-color: #050505 !important;
+}
+
+/* 2. 우측의 하얀색 예약 박스 ('모든 준비가 끝났습니다') 어둡게 변경 */
+body.horror-mode .room-main div, /* 메인 안의 모든 박스 배경을 일단 어둡게 */
+body.horror-mode [class*="box"],
+body.horror-mode [class*="wrap"] {
+    background-color: #111 !important;
+    border-color: #330000 !important;
+}
+
+/* 3. 하얀 박스 안에 있던 검은색 글씨들도 핏빛으로 통일 */
+body.horror-mode h1,
+body.horror-mode h2,
+body.horror-mode h3,
+body.horror-mode p,
+body.horror-mode span,
+body.horror-mode div {
+    color: #a80000 !important;
+}
+
+/* 4. 괴담 모드에서는 밝은 그림자 효과도 전부 끕니다 */
+body.horror-mode * {
+    box-shadow: none !important;
+}
+
+/* =========================================
+   [괴담 모드] 메인 홈페이지(index.html) 완벽 반전
+========================================= */
+/* 1. 메인 페이지의 주요 구역(section)과 컨테이너들의 하얀 배경 제거 */
+body.horror-mode section,
+body.horror-mode article,
+body.horror-mode .container,
+body.horror-mode .wrapper,
+body.horror-mode .content {
+    background-color: #050505 !important;
+}
+
+/* 2. 스페셜 오픈 특가 등 '하얀색 카드' 형태의 박스들 어둡게 변경 */
+body.horror-mode [class*="card"],
+body.horror-mode [class*="item"],
+body.horror-mode [class*="package"],
+body.horror-mode [class*="promo"],
+body.horror-mode [class*="list"] {
+    background-color: #111 !important;
+    border: 1px solid #330000 !important;
+}
+
+/* 3. 회색 이미지 자리(Placeholder)를 핏빛 어둠으로 변경 */
+body.horror-mode [class*="img"],
+body.horror-mode [class*="image"],
+body.horror-mode [class*="thumb"],
+body.horror-mode [class*="placeholder"],
+body.horror-mode [style*="background"] {
+    background-color: #1a0505 !important;
+    color: #8b0000 !important;
+    border: none !important;
+}
+
+/* =========================================
+   [괴담 모드] 화면 지지직(Glitch) 전환 연출
+========================================= */
+/* body에 glitch-active가 붙으면 노이즈 필름이 화면 전체를 덮습니다 */
+body.glitch-active::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* CSS만으로 TV 노이즈(Static)를 만드는 SVG 코드입니다 */
+    background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noise)"/%3E%3C/svg%3E');
+    opacity: 0.9;
+    z-index: 9999;
+    pointer-events: none; /* 클릭 방해 금지 */
+    mix-blend-mode: difference; /* 색상을 기괴하게 반전시킴 */
+    animation: noise-anim 0.1s infinite linear alternate-reverse;
+}
+
+/* 화면 전체를 미친듯이 흔들고 색상을 비트는 효과 */
+body.glitch-active {
+    animation: body-shake 0.1s infinite;
+    filter: invert(1) contrast(150%) hue-rotate(90deg); /* 색상 반전 및 왜곡 */
+}
+
+/* 노이즈 필름이 깜빡이는 애니메이션 */
+@keyframes noise-anim {
+    0% { transform: translate(0, 0); opacity: 0.7; }
+    20% { transform: translate(-5px, 5px); opacity: 0.9; }
+    40% { transform: translate(-5px, -5px); opacity: 0.5; }
+    60% { transform: translate(5px, 5px); opacity: 0.8; }
+    80% { transform: translate(5px, -5px); opacity: 1; }
+    100% { transform: translate(0, 0); opacity: 0.6; }
+}
+
+/* 화면 전체 지진 효과 */
+@keyframes body-shake {
+    0% { transform: translate(2px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* =========================================
+   [괴담 모드] 탈출 불가 (로그아웃, 내 호실 버튼만 예외)
+========================================= */
+/* 호러 모드에서는 헤더의 버튼 중 '로그인(로그아웃)'과 '내 호실'을 제외하고 전부 막습니다 */
+body.horror-mode header a:not([href="login.html"]):not([href="my-room.html"]) {
+    pointer-events: none !important; 
+    cursor: default !important; 
+}
+
+/* 로그아웃과 내 호실 버튼은 유저가 이동할 수 있도록 클릭 기능을 살려둡니다 */
+body.horror-mode header a[href="login.html"],
+body.horror-mode header a[href="my-room.html"] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    color: #ff0000 !important; /* 클릭할 수 있다는 걸 알 수 있게 핏빛 유지 */
+}
+
+/* 마우스 올렸을 때 호버 효과도 이 두 버튼에만 적용 */
+body.horror-mode header a[href="login.html"]:hover,
+body.horror-mode header a[href="my-room.html"]:hover {
+    color: #ff3333 !important;
+    text-shadow: 0 0 10px red !important;
+}
