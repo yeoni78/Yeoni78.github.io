@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (addrEl) addrEl.textContent = savedAddress;
 
     // =========================================
-    // 🚨 [수정됨] 숙박하기 -> 지지직 -> 시작하기 전환 연출
+    // 🚨 [수정됨] 숙박하기 -> 지지직 -> 시작하기 (클릭 시 rules.html 이동)
     // =========================================
     const buttons = document.querySelectorAll('button');
     let enterRoomBtn = null;
@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (enterRoomBtn) {
-        // 처음 한 번만 실행되도록 기명 함수(initHorror)로 묶습니다.
         enterRoomBtn.addEventListener('click', function initHorror() {
             
             // 1. 클릭 즉시 버튼 무력화 및 노이즈 효과 시작
@@ -40,19 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.add('horror-mode');
                 localStorage.setItem('horrorMode', 'true');
 
-                // 🚨 3. 텍스트를 '시작하기'로 변경하고 버튼 다시 활성화
+                // 3. 텍스트를 '시작하기'로 변경하고 버튼 다시 활성화
                 enterRoomBtn.textContent = "시작하기";
                 enterRoomBtn.style.pointerEvents = "auto";
-                enterRoomBtn.style.backgroundColor = "#4a0000"; // 진한 핏빛으로 변경
+                enterRoomBtn.style.backgroundColor = "#4a0000"; 
 
                 alert("철컥... 문이 밖에서 잠겼습니다.\n\n이제 되돌아갈 수 없습니다.");
 
-                // 4. 이제 이 버튼은 '숙박하기'가 아니므로 기존 이벤트를 지우고 새 이벤트를 줍니다.
+                // 4. 기존 이벤트를 지우고 새 이벤트(페이지 이동) 부여
                 enterRoomBtn.removeEventListener('click', initHorror);
                 
+                // 🚨 수정된 부분: 버튼 클릭 시 호텔 이용 수칙 페이지로 강제 납치!
                 enterRoomBtn.addEventListener('click', () => {
-                    // 🎮 [여기에 다음 기믹 추가] 시작하기 버튼을 눌렀을 때 일어날 일!
-                    alert("진정한 Golden Hotel의 이면에 오신 것을 환영합니다...\n(여기에 방탈출 게임 시작 화면을 띄우면 됩니다)");
+                    window.location.href = 'rules.html';
                 });
 
             }, 1200); 
