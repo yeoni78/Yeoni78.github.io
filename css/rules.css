@@ -86,3 +86,37 @@ body.rules-page.horror-mode header a[href="login.html"]:hover {
     color: #ff3333 !important;
     text-shadow: 0 0 10px red !important;
 }
+
+/* =========================================
+   [미니게임] 캔버스 및 픽셀 렌더링 설정
+========================================= */
+#game-canvas {
+    display: block;
+    width: 100%;
+    max-width: 800px; /* 게임 원본 비율 유지 */
+    height: auto;
+    background-color: #050505;
+    border: 2px solid #4a0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    margin: 0 auto;
+    /* 도트(픽셀)가 선명하게 보이도록 설정 */
+    image-rendering: pixelated; 
+    cursor: pointer;
+}
+
+/* =========================================
+   [엔딩 연출] 화면 지지직 (Glitch) 효과
+========================================= */
+@keyframes heavyGlitch {
+    0% { filter: invert(0) hue-rotate(0deg) contrast(1); transform: translate(0, 0) skew(0deg); }
+    20% { filter: invert(1) hue-rotate(90deg) contrast(2); transform: translate(-10px, 5px) skew(10deg); }
+    40% { filter: invert(0) hue-rotate(0deg) contrast(1); transform: translate(10px, -5px) skew(-10deg); }
+    60% { filter: invert(1) hue-rotate(180deg) contrast(3); transform: translate(-20px, 10px) skew(20deg); }
+    80% { filter: invert(0) hue-rotate(0deg) contrast(1); transform: translate(20px, -10px) skew(-20deg); }
+    100% { filter: invert(1) hue-rotate(270deg) contrast(2); transform: translate(0, 0) skew(0deg); }
+}
+
+body.ending-glitch {
+    animation: heavyGlitch 0.15s infinite;
+    pointer-events: none; /* 클릭 방지 */
+}

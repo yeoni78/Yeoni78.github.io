@@ -301,27 +301,36 @@ body.glitch-active {
 }
 
 /* =========================================
-   [괴담 모드] 탈출 및 복귀 루트 설정
+   [괴담 모드] 탈출 및 복귀 루트 설정 (내 호실 차단)
 ========================================= */
-/* 호러 모드에서는 '로그인', '내 호실', '호텔 이용 수칙'을 제외한 모든 메뉴(로고 포함)를 막습니다 */
-body.horror-mode header a:not([href="login.html"]):not([href="my-room.html"]):not([href="rules.html"]) {
+/* 호러 모드에서는 '로그인', '호텔 이용 수칙'을 제외한 모든 메뉴(로고, 내 호실 포함)를 막습니다 */
+body.horror-mode header a:not([href="login.html"]):not([href="rules.html"]) {
     pointer-events: none !important; 
     cursor: default !important; 
+    color: #8b0000 !important; /* 막힌 문은 어두운 핏빛으로 통일하여 비활성화 강조 */
 }
 
-/* 로그아웃, 내 호실, 이용 수칙 버튼은 유저가 이동할 수 있도록 클릭 기능을 살려둡니다 */
+/* 로그아웃, 이용 수칙 버튼은 유저가 이동할 수 있도록 클릭 기능을 살려둡니다 */
 body.horror-mode header a[href="login.html"],
-body.horror-mode header a[href="my-room.html"],
 body.horror-mode header a[href="rules.html"] {
     pointer-events: auto !important;
     cursor: pointer !important;
-    color: #ff0000 !important; /* 클릭할 수 있다는 걸 알 수 있게 핏빛 유지 */
+    color: #ff0000 !important; /* 클릭할 수 있는 생명줄은 밝은 핏빛 유지 */
 }
 
-/* 마우스 올렸을 때 호버(Hover) 효과도 이 세 버튼에만 적용 */
+/* 마우스 올렸을 때 호버(Hover) 효과도 이 두 버튼에만 적용 */
 body.horror-mode header a[href="login.html"]:hover,
-body.horror-mode header a[href="my-room.html"]:hover,
 body.horror-mode header a[href="rules.html"]:hover {
     color: #ff3333 !important;
     text-shadow: 0 0 10px red !important;
+}
+
+/* =========================================
+   [엔딩 후] 로그인 페이지에서 모든 이동 차단
+========================================= */
+/* endGameLock 상태이고 horror-mode일 때, '호텔 이용 수칙' 버튼도 강제 비활성화 */
+body.horror-mode header a[href="rules.html"] {
+    pointer-events: none !important;
+    color: #333 !important; /* 클릭 불가능한 느낌의 회색으로 변경 */
+    cursor: default !important;
 }
