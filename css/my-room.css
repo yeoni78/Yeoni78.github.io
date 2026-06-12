@@ -50,7 +50,7 @@
 }
 
 /* =========================================
-   2. 에어비앤비 스타일 3분할 갤러리
+   2. 에어비앤비 스타일 3분할 갤러리 (이미지 적용 완료)
 ========================================= */
 .room-gallery {
     display: flex;
@@ -76,6 +76,7 @@
     flex: 1; /* 작은 사진 위아래 반반 */
 }
 
+/* 🚨 여기가 핵심: 이미지 틀 */
 .img-placeholder {
     width: 100%;
     height: 100%;
@@ -85,7 +86,16 @@
     justify-content: center;
     color: #888;
     font-size: 1.2rem;
-    transition: filter 0.3s;
+    overflow: hidden;         /* 사진이 틀 밖으로 삐져나가지 않게 함 */
+    position: relative;       /* 내부 이미지를 감싸는 기준 */
+}
+
+/* 🚨 여기가 핵심: 틀 안에 들어가는 사진 */
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* 사진이 찌그러지지 않고 틀에 꽉 차게 함 */
+    display: block;
 }
 
 .img-placeholder:hover {

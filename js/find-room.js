@@ -62,16 +62,28 @@ document.addEventListener('DOMContentLoaded', () => {
             let roomTitle = `${brandInfo.title} [${roomNum}호]`;
             let roomAddr = brandInfo.address;
             
-            // 777호 당첨 기믹
+            // 🚨 1. 선택된 브랜드에 따라 이미지 접두사(앞부분) 결정
+            let imagePrefix = 'red_room'; // 기본값 (매직버니)
+            if (currentBrand === 'bluedream') imagePrefix = 'blue_room';
+            else if (currentBrand === 'flower') imagePrefix = 'Y_room';
+
+            // 🚨 2. 777호 당첨 시 텍스트 및 이미지 분기 처리
+            let imgTag = '';
             if(roomNum === 777) {
                 roomTitle = `🚨 [VIP 히든 룸] 황금의 방 777호`;
                 roomAddr = "경고: 이 호실의 위치는 추적할 수 없습니다.";
+                // 777호 전용 이미지 (캡처해주신 777.png)
+                imgTag = `<img src="image/777.png" alt="황금의 방 777호">`;
+            } else {
+                // 일반 방 이미지 (예: image/red_room_101.png)
+                imgTag = `<img src="image/${imagePrefix}_${roomNum}.png" alt="${roomNum}호">`;
             }
 
+            // 🚨 3. HTML 카드 생성 (배경색 바꾸는 복잡한 인라인 스타일 제거, 깔끔하게 imgTag만 삽입)
             const cardHtml = `
                 <div class="room-card" style="animation: fadeIn 0.5s ease;">
-                    <div class="room-img-placeholder" style="${roomNum === 777 ? 'background-color: #fff7e6; color: #b8860b;' : ''}">
-                        ${roomNum}호 이미지
+                    <div class="room-img-placeholder">
+                        ${imgTag}
                     </div>
                     <div class="room-info">
                         <h3 style="${roomNum === 777 ? 'color: #b8860b; font-weight: 900;' : ''}">${roomTitle}</h3>
@@ -89,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
             roomCardsList.insertAdjacentHTML('beforeend', cardHtml);
         });
     }
-
     /* =========================================
        3. 주사위 굴리기 기믹 (10% 확률로 777호)
     ========================================= */
